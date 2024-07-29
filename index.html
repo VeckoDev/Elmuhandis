@@ -1,9 +1,53 @@
-<html>
-  <head>
-    <title>Plant - Elmuhandis</title>
-  </head>
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <title>Plants - Elmuhandis</title>
+    <style>
+        /* Add your CSS styling here */
+        body {
+            font-family: Arial, sans-serif;
+            text-align: right;
+        }
+        .search-bar {
+            margin: 20px;
+        }
+        .plant-list {
+            list-style-type: none;
+            padding: 0;
+        }
+        .plant-list li {
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>النباتات</h1>
+    <div class="search-bar">
+        <input type="text" id="searchInput" placeholder="ابحث عن نبات...">
+    </div>
+    <ul id="plantList" class="plant-list">
+        <!-- Plant list items will go here -->
+        <li><a href="https://plants.elmuhandis.great-site.net/plant.html?plantname=Rose">وردة</a></li>
+        <li><a href="https://plants.elmuhandis.great-site.net/plant.html?plantname=Tulip">توليب</a></li>
+        <!-- Add more plants as needed -->
+    </ul>
 
-  <body>
-    <h1>Plant</h1>
-  </body>
+    <script>
+        document.getElementById('searchInput').addEventListener('keyup', function() {
+            var input = document.getElementById('searchInput').value.toLowerCase();
+            var plantList = document.getElementById('plantList');
+            var plants = plantList.getElementsByTagName('li');
+            for (var i = 0; i < plants.length; i++) {
+                var a = plants[i].getElementsByTagName('a')[0];
+                var txtValue = a.textContent || a.innerText;
+                if (txtValue.toLowerCase().indexOf(input) > -1) {
+                    plants[i].style.display = "";
+                } else {
+                    plants[i].style.display = "none";
+                }
+            }
+        });
+    </script>
+</body>
 </html>
